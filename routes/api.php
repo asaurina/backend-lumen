@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+
 /** @var \Laravel\Lumen\Routing\Router $router */
 
 /*
@@ -24,4 +26,7 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
   $router->put('users/{uuid}', 'UserController@update');
   $router->delete('users/{uuid}', 'UserController@destroy');
   $router->post('users/restore/{uuid}', 'UserController@restore');
+  $router->options('/{any:.*}', function (Request $req) {
+    return;
+  });
 });
